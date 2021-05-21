@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Familles{% endblock %}
+{% block monTitre %}Page listant les familles d'animaux{% endblock %}
+{% block body %}
+{% for famille in familles %}
+    <h2 class="border-bottom border-primary">{{ famille.libelle|capitalize }}</h2>
+    <div>{{ famille.description }}</div>
+    <div class="row">
+        {% for animal in famille.animaux %}
+            <div class="col-6">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6 col-lg-2 text-center">
+                        <img src="{{asset('images/'~ animal.image)}}" class="img img-fluidS">
+                    </div>
+                    <div class="col text-center">
+                        <p><a href="{{ path('afficher_animal',{'id' : animal.id }) }}">{{ animal.nom }}</a></p>
+                        <div><a href="{{ path('afficher_famille', {'id' : famille.id}) }}" class="btn btn-primary"> {{ animal.famille.libelle }}</a></div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+{% endblock %}
