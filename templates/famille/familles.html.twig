@@ -16,6 +16,9 @@
                     <div class="col text-center">
                         <p><a href="{{ path('afficher_animal',{'id' : animal.id }) }}">{{ animal.nom }}</a></p>
                         <div><a href="{{ path('afficher_famille', {'id' : famille.id}) }}" class="btn btn-primary"> {{ animal.famille.libelle }}</a></div>
+                        {% for continentAnimal in animal.continents %}
+                            <div><a href="" class="btn btn-warning">{{ continent.libelle }}</a></div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

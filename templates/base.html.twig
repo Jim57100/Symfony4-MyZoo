@@ -29,7 +29,7 @@
           <a class="nav-link" href="{{path('familles')}}">Familles d'animaux</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="{{path('continents')}}">Continents</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
@@ -53,5 +53,6 @@
 
         <h1 class="border border-dark rounded p-2 m-2 bg-dark text-white">{% block monTitre %}{% endblock %}</h1>
         {% block body %}{% endblock %}
+        <div class="card" style="width: 18rem;">{% block card %}{% endblock %}</div>
     </body>
 </html>

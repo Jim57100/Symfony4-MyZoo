@@ -3,22 +3,26 @@
 {% block title %}Accueil{% endblock %}
 {% block monTitre %}Liste des animaux{% endblock %}
 {% block body %}
-    {% for animal in animaux %}
-        <div class="row align-items-center">
-            <div class="col-2 text-center p-3">
-                <img src="{{asset('images/'~ animal.image)}}" class="img">
-            </div>
-            <div class="col-auto p-3">
-                <h2><a href="{{ path('afficher_animal',{'id' : animal.id }) }}">{{ animal.nom }}</a></h2>
-                <div>{{ animal.description }}</div>
+{% for animal in animaux %}
+<div class="row align-items-center">
+    <div class="col-2 text-center p-3">
+        <div class="card" style="width: 18rem;">
+            <img src="{{asset('images/'~ animal.image)}}" class="card-img-top" alt="{{ animal.image }}">
+            <div class="card-body">
+                <h2><a href="{{ path('afficher_animal',{'id' : animal.id }) }}" class="card-title">{{ animal.nom }}</a>
+                </h2>
+                <div class="card-text">{{ animal.description }}</div>
                 <div>{{ animal.poids }}</div>
-                <div><a href="{{ path('afficher_famille', {'id' : animal.famille.id}) }}" class="btn btn-primary"> {{ animal.famille.libelle }}</a></div>
+                <div><a href="{{ path('afficher_famille', {'id' : animal.famille.id}) }}" class="btn btn-primary">
+                        {{ animal.famille.libelle }}</a></div>
                 <div>
-                {% for continent in animal.continents %}
-                            <div><a href="" class="btn btn-warning">{{ continent.libelle }}</a></div>
-                {% endfor %}
+                    {% for continent in animal.continents %}
+                    <div><a href="" class="btn btn-warning">{{ continent.libelle }}</a></div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-    {% endfor %}
+    </div>
+</div>
+{% endfor %}
 {% endblock %}
