@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Familles{% endblock %}
-{% block monTitre %}famille {{ famille.libelle }} {% endblock %}
+{% block monTitre %}Famille {{ famille.libelle }} {% endblock %}
+
 {% block body %}
     <div>{{ famille.description }}</div>
     <div class="row">
@@ -12,8 +12,11 @@
                         <img src="{{asset('images/'~ animal.image)}}" class="img img-fluidS">
                     </div>
                     <div class="col text-center">
-                        <p><a href="{{ path('afficher_animal',{'id' : animal.id }) }}">{{ animal.nom }}</a></p>
-                        <div><a href="{{ path('afficher_famille', {'id' : famille.id}) }}" class="btn btn-primary"> {{ animal.famille.libelle }}</a></div>
+                        <a href="{{ path('afficher_animal',{'id' : animal.id }) }}">{{ animal.nom }}</a>
+                        <a href="{{ path('afficher_famille', {'id' : famille.id}) }}" class="btn btn-primary"> {{ animal.famille.libelle }}</a>
+                        {% for continent in animal.continents %}
+                            <a href="{{ path('afficher_continent', {'id':continent.id}) }}" class="btn btn-warning">{{ continent.libelle }}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

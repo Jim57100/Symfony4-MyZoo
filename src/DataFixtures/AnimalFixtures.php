@@ -130,7 +130,7 @@ class AnimalFixtures extends Fixture
         $a6 = new Animal();
         $a6->setNom("chauve-souris")
             ->setDescription("Un animal masqué")
-            ->setImage("bat.png")
+            ->setImage("bat.jpg")
             ->setPoids(0.3)
             ->setDangereux(false)
             ->setFamille($c1)
@@ -144,7 +144,7 @@ class AnimalFixtures extends Fixture
         $a7 = new Animal();
         $a7->setNom("requin")
             ->setDescription("Un animal aquatique")
-            ->setImage("shark.png")
+            ->setImage("shark.jpg")
             ->setPoids(1500)
             ->setDangereux(true)
             ->setFamille($c3)
@@ -172,7 +172,7 @@ class AnimalFixtures extends Fixture
         $a9 = new Animal();
         $a9->setNom("velociraptor")
             ->setDescription("Un animal à quatre pattes")
-            ->setImage("camaleon.jpg")
+            ->setImage("veloc.jpg")
             ->setPoids(0.2)
             ->setDangereux(true)
             ->setFamille($c2)
@@ -187,21 +187,21 @@ class AnimalFixtures extends Fixture
         $d1 = new Dispose();
         $d1->setPersonne($p1)
             ->setAnimal($a1)
-            ->setNb(30);
+            ->setNb(3);
         $manager->persist($d1);
 
 
         $d2 = new Dispose();
-        $d2->setPersonne($p1)
-            ->setAnimal($a1)
-            ->setNb(30);
+        $d2->setPersonne($p2)
+            ->setAnimal($a3)
+            ->setNb(10);
         $manager->persist($d2);
 
 
         $d3 = new Dispose();
-        $d3->setPersonne($p1)
-            ->setAnimal($a1)
-            ->setNb(30);
+        $d3->setPersonne($p3)
+            ->setAnimal($a9)
+            ->setNb(3);
         $manager->persist($d3);
 
         $manager->flush();

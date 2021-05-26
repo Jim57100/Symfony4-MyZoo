@@ -3,26 +3,29 @@
 {% block title %}Accueil{% endblock %}
 {% block monTitre %}Liste des animaux{% endblock %}
 {% block body %}
-{% for animal in animaux %}
 <div class="row align-items-center">
-    <div class="col-2 text-center p-3">
-        <div class="card" style="width: 18rem;">
+    {% for animal in animaux %}
+    <div class="col-sm-12 col-md-3 text-center d-flex justify-content-center align-self-stretch">
+        <div class="card m-2 shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
             <img src="{{asset('images/'~ animal.image)}}" class="card-img-top" alt="{{ animal.image }}">
-            <div class="card-body">
+            <div class="card-body m-0 p-1">
                 <h2><a href="{{ path('afficher_animal',{'id' : animal.id }) }}" class="card-title">{{ animal.nom }}</a>
                 </h2>
-                <div class="card-text">{{ animal.description }}</div>
-                <div>{{ animal.poids }}</div>
-                <div><a href="{{ path('afficher_famille', {'id' : animal.famille.id}) }}" class="btn btn-primary">
-                        {{ animal.famille.libelle }}</a></div>
-                <div>
-                    {% for continent in animal.continents %}
-                    <div><a href="" class="btn btn-warning">{{ continent.libelle }}</a></div>
-                    {% endfor %}
+                <div class="card-text">
+                    <div>{{ animal.description }}</div>
+                    <div>poids (kg): {{ animal.poids }}</div>
+                    <div>classe : <a href="{{ path('afficher_famille', {'id' : animal.famille.id}) }}"
+                            class="btn btn-primary">
+                            {{ animal.famille.libelle }}</a></div>
+                    <div>
+                        {% for continent in animal.continents %}
+                            <a href="{{ path('afficher_continent', {'id':continent.id}) }}" class="btn btn-warning">{{ continent.libelle }}</a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    {% endfor %}
 </div>
-{% endfor %}
 {% endblock %}

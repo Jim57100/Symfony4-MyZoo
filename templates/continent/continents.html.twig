@@ -1,28 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des continents{% endblock %}
+{% block monTitre %}Liste des continents{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4">
-                {% for continent in continents %}
-                <h2 class="border-bottom border-primary"><a
-                        href="{{ path('afficher_continent', {'id':continent.id}) }}">{{continent.libelle}}</h2>
-                {% for animal in continent.animaux %}
-                    {% block card %}
-                        <img src="{{asset('images/' ~ animal.image)}}" class="card-img-top">
-                        <div class="card-body">
-                            <div class="card text">
-                                <h2><a href="{{path('afficher_animal', {'id': animal.id}) }}">{{ animal.nom }}</a></h2>
-                                <div>{{ animal.description }}</div>
-                                <div>
-                                    <a href="{{path('afficher_famille', {'id': animal.famille.id }) }}">{{ animal.famille.libelle }}</a>
-                                </div>
-                            </div>
+    {% for continent in continents %}
+        <div class="row align-items-center">
+            <div class="col-12">
+                <h2 class="border-bottom border-primary"><a href="{{ path('afficher_continent', {'id':continent.id}) }}">{{continent.libelle}}</h2>
+            </div>
+            {% for animal in continent.animaux %}
+            <div class="col-sm-12 col-md-3 text-center d-flex align-self-stretch">
+
+                <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                    <img src="{{asset('images/' ~ animal.image)}}" class="card-img-top" alt="{{ animal.image }}">
+                    <div class="card-body m-0 p-1">
+                        <h2><a href="{{path('afficher_animal', {'id': animal.id}) }}">{{ animal.nom }}</a></h2>
+                        <div class="card text">
+                            <div>{{ animal.description }}</div>
+                            <a href="{{path('afficher_famille', {'id': animal.famille.id }) }}" class="btn btn-primary">{{ animal.famille.libelle }}</a>
+                            {% for continent in animal.continents %}
+                                    <a href="{{ path('afficher_continent', {'id':continent.id}) }}" class="btn btn-warning">{{ continent.libelle }}</a>
+                            {% endfor %}
                         </div>
-                    {% endblock %}
-                {% endfor %}
-                {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
         </div>
-    </div>
+    {% endfor %}
 {% endblock %}
