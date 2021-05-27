@@ -89,6 +89,7 @@ class AnimalFixtures extends Fixture
             ->addContinent($continent5)
             ;
         $manager->persist($a2);
+
         $a3 = new Animal();
         $a3->setNom("chat")
             ->setDescription("Un animal dangereux")
@@ -190,13 +191,11 @@ class AnimalFixtures extends Fixture
             ->setNb(3);
         $manager->persist($d1);
 
-
         $d2 = new Dispose();
         $d2->setPersonne($p2)
             ->setAnimal($a3)
             ->setNb(10);
         $manager->persist($d2);
-
 
         $d3 = new Dispose();
         $d3->setPersonne($p3)

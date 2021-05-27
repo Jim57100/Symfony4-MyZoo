@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Familles{% endblock %}
+
 {% block monTitre %}Page listant les familles d'animaux{% endblock %}
 
 {% block body %}
     {% for famille in familles %}
+    <div class="container">
         <div class="row align-items-center">
             <div class="col-12">
                 <h2 class="border-bottom border-primary">{{ famille.libelle|capitalize }}</h2>
@@ -11,7 +14,6 @@
             </div>
             {% for animal in famille.animaux %}
                 <div class="col-sm-12 col-md-3 text-center d-flex align-self-stretch">
-
                     <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
                         <img src="{{asset('images/'~ animal.image)}}" class="card-img-top" alt="{{ animal.image }}">
                         <div class="card-body m-0 p-1">
@@ -25,9 +27,9 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             {% endfor %}
         </div>
+    </div>
     {% endfor %}
 {% endblock %}

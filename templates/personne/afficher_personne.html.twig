@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Anciens propriétaires{% endblock %}
+
+{% block monTitre %}{{personne.nom}}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h3>Liste des animaux possédés :</h3>
+        {% for dispose in personne.disposes %}
+            <div class="row align-items-center">
+                <div class="card m-2 shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                    <img src="{{asset('images/' ~ dispose.animal.image)}}" class="card-img-top">
+                <div class="card-body">
+                    <h2 class="card-title"><a href="{{path('afficher_animal', {'id' : dispose.animal.id})}}">{{dispose.animal.nom}}</a></h2>
+                    <div class="card-text">Nombre : {{dispose.nb}}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
