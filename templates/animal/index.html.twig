@@ -12,10 +12,11 @@
             <div class="card m-2 shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
                 <img src="{{asset('images/'~ animal.image)}}" class="card-img-top" alt="{{ animal.image }}">
                 <div class="card-body m-0 p-1">
-                    <h2><a href="{{ path('afficher_animal',{'id' : animal.id }) }}" class="card-title">{{ animal.nom }}</a>
+                    <h2><a href="{{ path('afficher_animal',{'id' : animal.id }) }}" class="card-title">{{ animal.pseudo }}</a>
                     </h2>
-                    <div class="card-text">
-                        <div>{{ animal.description }}</div>
+                    <div class="card-text text-left">
+                        {# <div>Espèce : {{ animal.nom }}</div>
+                        <div>Description : {{ animal.description }}</div>
                         <div>poids (kg): {{ animal.poids }}</div>
                         <div>classe : <a href="{{ path('afficher_famille', {'id' : animal.famille.id}) }}"
                                 class="btn btn-primary">
@@ -24,7 +25,7 @@
                             {% for continent in animal.continents %}
                                 <a href="{{ path('afficher_continent', {'id':continent.id}) }}" class="btn btn-warning d-block m-1">{{ continent.libelle }}</a>
                             {% endfor %}
-                        </div>
+                        </div> #}
                         <div> Ancien(s) propriétaire(s) :
                             {% for dispose in animal.disposes %}
                                 <a href="{{path('afficher_personne', {'id':dispose.personne.id} )}}" class="btn btn-info">{{dispose.personne.nom}}</a>

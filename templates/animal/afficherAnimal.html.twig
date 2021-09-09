@@ -2,7 +2,7 @@
 
 {% block title %}Animal{% endblock %}
 
-{% block monTitre %}Affichage de l'animal : {{animal.nom}}{% endblock %}
+{% block monTitre %}Affichage de l'animal : {{animal.pseudo}}{% endblock %}
 
 {% block body %}
 <div class="container">
@@ -14,20 +14,23 @@
         </div>
         <div class="card col-8 align-self-stretch">
             <div class="card-body">
-                <div>Description :{{ animal.description }}</div>
-                <div>Poids (kg) :{{ animal.poids }}</div>
-                <div>Dangerosité :
+                <div>Espèce: {{ animal.nom }}</div>
+                <div>Description: {{ animal.description }}</div>
+                <div>Poids (kg): {{ animal.poids }}</div>
+                <div>Dangerosité:
                     {% if animal.dangereux %}
                         <span class="badge bg-danger">OUI</span>
                     {% else %}
                         <span class="badge bg-success">NON</span>
                     {% endif %}
                 </div>
-                <div>
-                    <a href="{{ path('afficher_famille', {'id' : animal.famille.id}) }}" class="btn btn-primary"> {{ animal.famille.libelle }}</a>
-                    {% for continent in animal.continents %}
-                            <div><a href="{{ path('afficher_continent', {'id':continent.id}) }}" class="btn btn-warning">{{ continent.libelle }}</a>
-                    {% endfor %}
+                <div>Famille:
+                    <a href="{{ path('afficher_famille', {'id' : animal.famille.id}) }}" class="btn btn-primary">{{ animal.famille.libelle }}</a>
+                    <div>Continent d'origine:
+                        {% for continent in animal.continents %}
+                            <a href="{{ path('afficher_continent', {'id':continent.id}) }}" class="btn btn-warning">{{ continent.libelle }}</a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

@@ -60,6 +60,11 @@ class Animal
      */
     private $disposes;
 
+    /**
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
+    private $pseudo;
+
     public function __construct()
     {
         $this->continents = new ArrayCollection();
@@ -196,6 +201,18 @@ class Animal
                 $dispose->setAnimal(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(?string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }
