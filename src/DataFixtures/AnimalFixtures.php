@@ -14,7 +14,6 @@ class AnimalFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        
         $p1 = new Personne();
         $p1->setNom('Milou');
         $manager->persist($p1);
